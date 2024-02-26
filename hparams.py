@@ -24,7 +24,7 @@ def create_hparams(hparams_string=None, verbose=False):
         "dist_url":"tcp://localhost:14897",
         "cudnn_enabled":True,
         "cudnn_benchmark":False,
-        "ignore_layers":['embedding.weight'],
+        "ignore_layers":['embedding.weight', 'n_symbols'],
         # freeze_layers":['encoder'], # Freeze tacotron2 layer for finetuning
 
         ################################
@@ -54,7 +54,8 @@ def create_hparams(hparams_string=None, verbose=False):
         ################################
         # Model Parameters             #
         ################################
-        "n_symbols": 313,
+        # "n_symbols": 313,
+        "n_symbols": len(symbols),
         "symbols_embedding_dim":512,
         "alignloss": "L2",
         "attention": "StepwiseMonotonicAttention",
